@@ -7,11 +7,16 @@ import {
   TextInput,
   Animated,
   Keyboard,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  ScrollView
 } from "react-native";
 import { Button } from "native-base";
 
 export default class LoginScreen extends Component {
+  static navigationOptions = {
+    header: null
+  }
+
   constructor(props) {
     super(props);
 
@@ -19,7 +24,9 @@ export default class LoginScreen extends Component {
 
 
   render() {
+    const { navigate } = this.props.navigation;
     return (
+      <ScrollView>
       <View
         style={[styles.container, { paddingBottom: this.keyboardHeight }]}
       >
@@ -32,7 +39,7 @@ export default class LoginScreen extends Component {
             source={require("../assets/logo.png")}
           />
         </View>
-        <View  style={styles.textstyle}>
+        <View style={styles.textstyle}>
           <Text style={styles.boldtext}>Knowledge at hand</Text>
           <Text style={styles.desctext}>
             We’ve made all the medical text books from the world’s leading
@@ -84,20 +91,17 @@ export default class LoginScreen extends Component {
             <Button
               transparent
               block
-              style={{
-                borderColor: "white",
-                borderRadius: 10,
-                borderWidth: 1,
-                marginTop: 25,
-                marginBottom: 20
-              }}
+              style={styles.button}
+             // onPress={() => navigate('EXPLORE')}
+             onPress={() => navigate('WELCOME')}
             >
               <Text style={{ color: "white" }}>Confirm</Text>
             </Button>
           </View>
         </View>
       </View>
-    ); 
+      </ScrollView>
+    );
   }
 }
 
@@ -106,7 +110,8 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    backgroundColor:"#fff"
   },
   textstyle: {
     justifyContent: "center",
@@ -129,7 +134,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     justifyContent: "center",
     alignItems: "center",
-    textAlign:'center',
+    textAlign: 'center',
     marginTop: 24,
     marginLeft: 52,
     marginRight: 53
@@ -150,5 +155,12 @@ const styles = StyleSheet.create({
   },
   IMAGE_HEIGHT: {
     height: "40%"
-  }
+  },
+  button:{
+    borderColor: "white",
+    borderRadius: 10,
+    borderWidth: 1,
+    marginTop: 25,
+    marginBottom: 30
+}
 });
