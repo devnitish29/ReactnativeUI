@@ -92,14 +92,9 @@ export default class LoginScreen extends Component {
             <Button
               transparent
               block
-              style={{
-                borderColor: "white",
-                borderRadius: 10,
-                borderWidth: 1,
-                marginTop: 25,
-                marginBottom: 20
-              }}
-              onPress={() => navigate('EXPLORE')}
+              style={styles.button}
+             // onPress={() => navigate('EXPLORE')}
+             onPress={() => navigate('WELCOME')}
             >
               <Text style={{ color: "white" }}>Confirm</Text>
             </Button>
@@ -161,5 +156,12 @@ const styles = StyleSheet.create({
   },
   IMAGE_HEIGHT: {
     height: "40%"
-  }
+  },
+  button:{
+    borderColor: "white",
+    borderRadius: 10,
+    borderWidth: 1,
+    marginTop: 25,
+    marginBottom: 30
+}
 });

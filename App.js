@@ -15,6 +15,10 @@ import { StackNavigator } from 'react-navigation';
 import { Root } from 'native-base';
 import LoginScreen from './src/components/LoginScreen';
 import ExploreScreen from './src/components/ExploreScreen';
+import WelcomeMainScreen from './src/components/welcomeScreens/WelcomeMainScreen';
+import FirstScreen from './src/components/welcomeScreens/FirstScreen';
+import SecondScreen from './src/components/welcomeScreens/SecondScreen';
+import ThirdScreen from './src/components/welcomeScreens/ThirdScreen';
 
 const RootStack = StackNavigator(
   {
@@ -23,6 +27,9 @@ const RootStack = StackNavigator(
     },
     EXPLORE: {
       screen: ExploreScreen
+    },
+    WELCOME:{
+      screen: WelcomeMainScreen
     }
   },
   {
@@ -36,6 +43,8 @@ export default class App extends Component {
       <Root>
         <RootStack />
       </Root>
+
+      // <WelcomeMainScreen />
     );
   }
 }
