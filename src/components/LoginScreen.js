@@ -9,7 +9,6 @@ import {
   Keyboard,
   KeyboardAvoidingView
 } from "react-native";
-import AnimatedHideView from 'react-native-animated-hide-view';
 import { Button } from "native-base";
 
 export default class LoginScreen extends Component {

@@ -12,13 +12,14 @@ import {
   View
 } from 'react-native';
 import LoginScreen from './src/components/LoginScreen';
+import OnboardingScreen from './src/components/OnboardingScreen';
 
 
 
 export default class App extends Component {
-  render() {
+  render() { 
     return (
-     <LoginScreen />
+     <OnboardingScreen/>
     );
   }
 }
