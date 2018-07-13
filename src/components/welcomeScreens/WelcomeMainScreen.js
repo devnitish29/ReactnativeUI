@@ -43,7 +43,7 @@ class WelcomeMainScreen extends Component {
         <Button
           block
           style={styles.button}
-          onPress={() => navigate('EXPLORE')}
+          onPress={() => navigate('HOME')}
         >
           <Text style={{ color: "white" }}>Next</Text>
         </Button>

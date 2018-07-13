@@ -14,7 +14,8 @@ import {
   FooterTab, Button, Text,
   View, Left, Right, Body, Title,
   H1, H2, H3, Form, Item, Input, Label,
-  List, ListItem, Spinner, Fab
+  List, ListItem, Spinner, Fab,
+
 } from 'native-base';
 const items = [
   {
@@ -86,8 +87,8 @@ export default class ExploreScreen extends Component {
                 <View style={styles.sectionHeader}>
                   <Text style={{ alignSelf: 'flex-start' }}>{this.state.items[index].header}</Text>
                   {this.state.items[index].show ? (
-                    <Icon name='angle-down' type="FontAwesome" color='#000' alignSelf='flex-end' onPress={() => this.toggle('hide', index)} />) :
-                    <Icon name='angle-up' type="FontAwesome" color='#000' alignSelf='flex-end' onPress={() => this.toggle('show', index)} />}
+                    <Icon name='angle-down' type="FontAwesome"  color='#000' alignSelf='flex-end' onPress={() => this.toggle('hide', index)} />) :
+                    <Icon name='angle-up' type="FontAwesome"  color='#000' alignSelf='flex-end' onPress={() => this.toggle('show', index)} />}
                 </View>
                 <View style={styles.sectionContent}>
                   {this.state.items[index].show ? (

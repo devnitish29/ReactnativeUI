@@ -10,115 +10,116 @@ import {
   KeyboardAvoidingView,
   ScrollView
 } from "react-native";
-import { Button } from "native-base";
+import { Button, Tab, Tabs, TabHeading, Icon, Container, Content } from "native-base";
+import Logincontainer from "./login/Logincontainer";
+import Registrationcontainer from "./login/Registrationcontainer";
 
 export default class LoginScreen extends Component {
   static navigationOptions = {
     header: null
-  }
+  };
 
   constructor(props) {
     super(props);
-
+    this.state = {
+      register: false,
+      animation: new Animated.Value()
+    };
   }
 
+  onChangeTab = index => {
+    console.log("====================================");
+    console.log(index);
+    console.log("====================================");
+  };
 
   render() {
     const { navigate } = this.props.navigation;
     return (
-      <ScrollView>
-      <View
-        style={[styles.container, { paddingBottom: this.keyboardHeight }]}
-      >
-        <View style={styles.applogo}>
-          <Image
-            style={{
-              width: 75,
-              height: 66
-            }}
-            source={require("../assets/logo.png")}
-          />
-        </View>
-        <View style={styles.textstyle}>
-          <Text style={styles.boldtext}>Knowledge at hand</Text>
-          <Text style={styles.desctext}>
-            We’ve made all the medical text books from the world’s leading
-            publishers available in one single app, so that doctors always and
-            in seconds can get a second opinion from a trusted source.
-          </Text>
-          <Text style={styles.notamember}>
-            Not a member? Register for a free 30 day trial.
-          </Text>
-        </View>
-        <View style={styles.logincontainer}>
-          <Text
-            style={{
-              color: "white",
-              fontSize: 15,
-              marginTop: 32,
-              textAlign: "center"
-            }}
-          >
-            Login
-          </Text>
-          <View style={{ marginHorizontal: 40, marginTop: 28 }}>
-            <TextInput
-              style={{
-                backgroundColor: "white",
-                padding: 10,
-                borderRadius: 5,
-                width: null
-              }}
-              placeholder="Email"
-              placeholderTextColor="black"
-              autoCapitalize="none"
-              underlineColorAndroid="transparent"
-            />
-            <TextInput
-              style={{
-                backgroundColor: "white",
-                padding: 10,
-                borderRadius: 5,
-                width: null,
-                marginTop: 28
-              }}
-              placeholder="Password"
-              placeholderTextColor="black"
-              autoCapitalize="none"
-              underlineColorAndroid="transparent"
-            />
+      <Container style={styles.maincontainer}>
 
-            <Button
-              transparent
-              block
-              style={styles.button}
-             // onPress={() => navigate('EXPLORE')}
-             onPress={() => navigate('WELCOME')}
-            >
-              <Text style={{ color: "white" }}>Confirm</Text>
-            </Button>
+        <Content
+
+          contentContainerStyle={[styles.container, { paddingBottom: this.keyboardHeight }]}
+        >
+          <View style={styles.applogo}>
+            <Image
+              style={{
+                width: 75,
+                height: 66
+              }}
+              source={require("../assets/logo.png")}
+            />
           </View>
-        </View>
-      </View>
-      </ScrollView>
+          <View style={styles.textstyle}>
+            <Text style={styles.boldtext}>Knowledge at hand</Text>
+            <Text style={styles.desctext}>
+              We’ve made all the medical text books from the world’s leading
+              publishers available in one single app, so that doctors always
+              and in seconds can get a second opinion from a trusted source.
+              </Text>
+            <Text style={styles.notamember}>
+              Not a member? Register for a free 30 day trial.
+              </Text>
+          </View>
+          <Content contentContainerStyle={styles.logincontainer}  >
+            <Tabs onChangeTab={({ i }) => this.onChangeTab(i)}>
+              <Tab
+                tabStyle={{ backgroundColor: "#6628D8" }}
+                heading={
+                  <TabHeading style={{ backgroundColor: "#6628D8" }}>
+                    <Text style={{ color: "#fff", fontWeight: "bold" }}>
+                      Login
+                      </Text>
+                  </TabHeading>
+                }
+              >
+                <Logincontainer />
+              </Tab>
+              <Tab
+                tabStyle={{ backgroundColor: "#6628D8" }}
+                heading={
+                  <TabHeading style={{ backgroundColor: "#6628D8" }}>
+                    <Text style={{ color: "#fff", fontWeight: "bold" }}>
+                      Register
+                      </Text>
+                  </TabHeading>
+                }
+              >
+                <Registrationcontainer />
+              </Tab>
+            </Tabs>
+          </Content>
+        </Content>
+
+      </Container>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
+  maincontainer: {
     flex: 1,
     flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor:"#fff"
+    alignContent: 'center',
+    height: null,
+    width: "100%",
+    backgroundColor: "#6628D8"
+  },
+  container: {
+
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: "column",
+    alignSelf: 'center',
+    backgroundColor: "#fff"
   },
   textstyle: {
-    justifyContent: "center",
-    alignItems: "center"
+
+    alignSelf: 'center'
   },
   applogo: {
-    justifyContent: "flex-start",
+
     alignContent: "center",
     marginTop: 50
   },
@@ -127,14 +128,14 @@ const styles = StyleSheet.create({
     marginTop: 37,
     fontSize: 36,
     justifyContent: "center",
-    alignItems: "center"
+    alignSelf: 'center',
   },
   desctext: {
     color: "#868686",
     fontSize: 15,
     justifyContent: "center",
     alignItems: "center",
-    textAlign: 'center',
+    textAlign: "center",
     marginTop: 24,
     marginLeft: 52,
     marginRight: 53
@@ -142,25 +143,25 @@ const styles = StyleSheet.create({
   notamember: {
     color: "#6628D8",
     fontSize: 15.5,
+    alignSelf: 'center',
     marginTop: 45
   },
 
   logincontainer: {
     backgroundColor: "#6628D8",
     flex: 4,
-    flexDirection: "column",
     width: "100%",
     height: null,
-    marginTop: 20
+    marginTop: 10
   },
   IMAGE_HEIGHT: {
     height: "40%"
   },
-  button:{
+  button: {
     borderColor: "white",
     borderRadius: 10,
     borderWidth: 1,
     marginTop: 25,
     marginBottom: 30
-}
+  }
 });
